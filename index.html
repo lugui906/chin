@@ -144,6 +144,7 @@
                 <li><a href="#features">核心特性</a></li>
                 <li><a href="#advantage">系统优势</a></li>
                 <li><a href="#download">下载</a></li>
+                <li><a href="#feedback">反馈</a></li>
                 <li><a href="#about">关于</a></li>
             </ul>
             <button class="nav-btn">了解更多</button>
@@ -204,6 +205,21 @@
                     <h3>兼容生态</h3>
                     <p>完美兼容Windows常用软件和Linux命令行，无需额外配置，直接运行原有程序。</p>
                 </div>
+                <div class="feature-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>内置AI助手</h3>
+                    <p>集成智能AI助手，提供语音交互、系统管理、应用推荐等智能服务，提升使用体验。</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-glass-cheers"></i>
+                    <h3>Wine兼容层</h3>
+                    <p>内置Wine兼容层，无需额外配置即可运行Windows应用程序，扩展软件生态。</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-th-large"></i>
+                    <h3>丰富内置应用</h3>
+                    <p>预装常用办公、娱乐、开发工具，开箱即用，满足日常使用需求。</p>
+                </div>
             </div>
         </div>
     </section>
@@ -258,6 +274,41 @@
                 <p>支持x86_64架构，提供ISO镜像安装方式</p>
                 <div class="download-btns">
                     <a href="https://feishu.doubao.com/drive/file/PoDabH8QposY0VxrErqc08zNn2b" target="_blank" class="download-btn"><i class="fas fa-download"></i> 下载ISO镜像</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 反馈功能 -->
+    <section class="feedback" id="feedback" style="padding: 8rem 0; background: var(--light);">
+        <div class="container">
+            <h2 class="section-title">用户反馈</h2>
+            <p class="section-desc">您的反馈对我们非常重要，帮助我们不断改进和优化Chindows操作系统</p>
+            <div style="max-width: 700px; margin: 0 auto; background: white; padding: 3rem; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                <form id="feedbackForm" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <div>
+                            <label for="name" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--dark);">姓名</label>
+                            <input type="text" id="name" name="name" placeholder="请输入您的姓名" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem;">
+                        </div>
+                        <div>
+                            <label for="email" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--dark);">邮箱</label>
+                            <input type="email" id="email" name="email" placeholder="请输入您的邮箱" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem;">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="subject" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--dark);">主题</label>
+                        <input type="text" id="subject" name="subject" placeholder="请输入反馈主题" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem;">
+                    </div>
+                    <div>
+                        <label for="message" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--dark);">反馈内容</label>
+                        <textarea id="message" name="message" rows="5" placeholder="请详细描述您的问题或建议" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem; resize: vertical;"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary" style="align-self: flex-start; cursor: pointer;">提交反馈</button>
+                </form>
+                <div id="feedbackSuccess" style="display: none; margin-top: 2rem; padding: 1rem; background: #d4edda; color: #155724; border-radius: 4px; text-align: center;">
+                    <i class="fas fa-check-circle" style="font-size: 1.5rem; margin-bottom: 0.5rem; display: block;"></i>
+                    <p>反馈提交成功！我们会尽快处理您的反馈。</p>
                 </div>
             </div>
         </div>
@@ -391,6 +442,35 @@
             card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(card);
         });
+        
+        // 反馈表单提交处理
+        const feedbackForm = document.getElementById('feedbackForm');
+        const feedbackSuccess = document.getElementById('feedbackSuccess');
+        
+        if (feedbackForm) {
+            feedbackForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // 简单的表单验证
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value;
+                
+                if (name && email && subject && message) {
+                    // 模拟表单提交
+                    setTimeout(() => {
+                        feedbackForm.reset();
+                        feedbackSuccess.style.display = 'block';
+                        
+                        // 5秒后隐藏成功消息
+                        setTimeout(() => {
+                            feedbackSuccess.style.display = 'none';
+                        }, 5000);
+                    }, 1000);
+                }
+            });
+        }
         
         // 页面加载完成后的初始化
         window.addEventListener('load', () => {
