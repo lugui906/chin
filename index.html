@@ -3,344 +3,232 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="TSAI-OS - aim-ai核心2.0，毛玻璃界面，AI防窥屏，AI命令行，Trae代码，Solo工作，多品牌设备互联，AI内存管理，AI定时任务，AI编辑器，AI智能体，AI语音交互，AI任务栏搜索，本地模型/云端">
-    <meta name="keywords" content="TSAI-OS,AI操作系统,aim-ai核心,Trae代码,Solo工作,AI防窥屏,AI命令行,毛玻璃界面,AI智能体,多设备互联,Linux,Windows,开源">
+    <meta name="description" content="TSAI-OS 12 - 基于 Linux 的 AI 桌面操作系统，aim-ai核心2.0，35+ AI 功能，毛玻璃界面，AI命令行，Trae代码，Solo工作，AI定时任务，AI编辑器，AI智能体，AI语音交互，AI任务栏搜索，AI知识库，AI字幕，AI会议概括，AI防窥屏，隔空手势，Office AI伴侣，电脑管家，AI文件对话，手机连接，AIS解释器，本地模型/云端双引擎">
+    <meta name="keywords" content="TSAI-OS,AI操作系统,Linux,aim-ai核心,Trae代码,Solo工作,AI命令行,毛玻璃界面,AI智能体,AI知识库,AI字幕,AI会议概括,隔空手势,Office AI伴侣,电脑管家,AI定时任务,AI编辑器,AI防窥屏,AIS,手机连接,本地模型,开源">
     <meta name="author" content="TurtleSoft">
-    <title>TSAI-OS 11-AI 智能操作系统</title>
+    <title>TSAI-OS 12 AI 桌面操作系统 - 智能原生 · 更懂你的系统</title>
     <style>
         * {margin: 0; padding: 0; box-sizing: border-box;}
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap');
         :root {
-            --bg-primary: #0a0a1a;
-            --bg-secondary: #0d0d2b;
-            --bg-card: rgba(255,255,255,0.03);
-            --glass-card: rgba(10,15,40,0.55);
-            --glass-card-hover: rgba(10,15,45,0.7);
-            --glass-blur: 16px;
-            --cyan: #00f0ff;
-            --cyan-dim: rgba(0,240,255,0.15);
-            --blue: #3a7dff;
-            --purple: #8b5cf6;
-            --pink: #ff2d95;
-            --text-primary: #e0e6f0;
-            --text-secondary: #8899bb;
-            --glass-bg: rgba(10,10,30,0.75);
-            --glass-border: rgba(0,240,255,0.12);
-            --neon-shadow: 0 0 20px rgba(0,240,255,0.3);
+            --primary: #1668dc;
+            --primary-light: #e8f1fe;
+            --primary-dark: #0e4fb0;
+            --accent: #f7a600;
+            --cyan: #00b3c7;
+            --bg: #ffffff;
+            --bg-gray: #f6f8fb;
+            --card-bg: #ffffff;
+            --border: #e6ebf2;
+            --text: #1f2329;
+            --text-2: #4e5969;
+            --text-3: #86909c;
+            --shadow: 0 4px 20px rgba(31,35,41,0.06);
+            --shadow-hover: 0 10px 30px rgba(22,104,220,0.12);
+            --radius: 12px;
         }
         html {scroll-behavior: smooth;}
         body {
             font-family: 'Noto Sans SC', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
             overflow-x: hidden;
-            line-height: 1.6;
         }
         a {text-decoration: none; color: inherit;}
         ul {list-style: none;}
-        .container {width: 90%; max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;}
+        img {max-width: 100%;}
+        .container {width: 90%; max-width: 1200px; margin: 0 auto;}
 
-        ::selection {background: var(--cyan); color: #000;}
-        ::-webkit-scrollbar {width: 6px;}
-        ::-webkit-scrollbar-track {background: var(--bg-primary);}
-        ::-webkit-scrollbar-thumb {background: var(--cyan); border-radius: 3px;}
+        ::selection {background: var(--primary); color: #fff;}
+        ::-webkit-scrollbar {width: 8px;}
+        ::-webkit-scrollbar-track {background: var(--bg-gray);}
+        ::-webkit-scrollbar-thumb {background: #c0c9d6; border-radius: 4px;}
+        ::-webkit-scrollbar-thumb:hover {background: var(--primary);}
 
-        #particles-canvas {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 0;
-            pointer-events: none;
+        .section {padding: 90px 0;}
+        .section.alt {background: var(--bg-gray);}
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.6rem;
+        }
+        .section-title span {color: var(--primary);}
+        .section-desc {
+            text-align: center;
+            color: var(--text-2);
+            font-size: 1.05rem;
+            max-width: 720px;
+            margin: 0 auto 3.5rem;
+        }
+        .section-line {
+            width: 48px; height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--cyan));
+            border-radius: 2px;
+            margin: 0 auto 1.2rem;
         }
 
-        .grid-overlay {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-image:
-                linear-gradient(rgba(0,240,255,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,240,255,0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .scanline {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--cyan), transparent);
-            opacity: 0.15;
-            z-index: 0;
-            pointer-events: none;
-            animation: scanlineMove 8s linear infinite;
-        }
-        @keyframes scanlineMove {
-            0% {top: -2px;}
-            100% {top: 100%;}
-        }
-
-        .glow-text {
-            text-shadow: 0 0 10px rgba(0,240,255,0.5), 0 0 30px rgba(0,240,255,0.2);
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, var(--cyan), var(--blue), var(--purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
+        /* ========== 顶部导航 ========== */
         .nav {
             position: fixed;
             top: 0; left: 0; right: 0;
             z-index: 999;
-            padding: 0.8rem 0;
-            transition: all 0.4s ease;
-            background: transparent;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
         }
-        .nav.scrolled {
-            background: rgba(10,10,30,0.65);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border-bottom: 1px solid var(--glass-border);
-            box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+        .nav .container {display: flex; align-items: center; justify-content: space-between; height: 64px;}
+        .nav-logo {display: flex; align-items: center; gap: 10px;}
+        .nav-logo-mark {
+            width: 34px; height: 34px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--primary), var(--cyan));
+            display: flex; align-items: center; justify-content: center;
+            color: #fff; font-weight: 900; font-size: 0.9rem;
+            box-shadow: 0 4px 12px rgba(22,104,220,0.3);
         }
-        .nav .container {display: flex; justify-content: space-between; align-items: center;}
-        .nav-logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--cyan), var(--blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: 2px;
-        }
-        .nav-logo span {color: var(--cyan);}
+        .nav-logo-text {font-size: 1.25rem; font-weight: 700; letter-spacing: 1px;}
+        .nav-logo-text small {display: block; font-size: 0.65rem; color: var(--text-3); font-weight: 400; letter-spacing: 0; line-height: 1;}
         .nav-menu {display: flex; gap: 2rem;}
         .nav-menu a {
             font-size: 0.95rem;
-            color: var(--text-secondary);
-            transition: all 0.3s;
+            color: var(--text-2);
+            transition: color 0.3s;
             position: relative;
-            padding: 0.3rem 0;
-            letter-spacing: 1px;
+            padding: 4px 0;
         }
-        .nav-menu a:hover {color: var(--cyan);}
         .nav-menu a::after {
             content: '';
             position: absolute;
-            bottom: -2px; left: 0;
+            bottom: -4px; left: 0;
             width: 0; height: 2px;
-            background: var(--cyan);
-            box-shadow: var(--neon-shadow);
+            background: var(--primary);
+            border-radius: 1px;
             transition: width 0.3s;
         }
-        .nav-menu a:hover::after {width: 100%;}
-        .nav-buttons {display: flex; gap: 1rem; align-items: center;}
-        .nav-btn {
-            background: transparent;
-            color: var(--cyan);
-            padding: 0.5rem 1.5rem;
-            border-radius: 4px;
-            border: 1px solid var(--cyan);
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 600;
-            white-space: nowrap;
+        .nav-menu a:hover, .nav-menu a.active {color: var(--primary);}
+        .nav-menu a:hover::after, .nav-menu a.active::after {width: 100%;}
+        .nav-right {display: flex; gap: 0.8rem; align-items: center;}
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+            padding: 0.55rem 1.4rem;
+            border-radius: 6px;
             font-size: 0.9rem;
-            font-family: 'Noto Sans SC', sans-serif;
-            position: relative;
-            overflow: hidden;
-        }
-        .nav-btn::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0,240,255,0.15), transparent);
-            transition: left 0.5s;
-        }
-        .nav-btn:hover::before {left: 100%;}
-        .nav-btn:hover {
-            background: rgba(0,240,255,0.1);
-            box-shadow: 0 0 20px rgba(0,240,255,0.2), inset 0 0 20px rgba(0,240,255,0.05);
-            transform: translateY(-2px);
-        }
-        .mobile-menu {display: none; font-size: 1.5rem; cursor: pointer; z-index: 1000; color: var(--cyan);}
-
-        .banner {
-            margin-top: 0;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 8rem 0 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-        .banner::before {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: radial-gradient(ellipse at 30% 50%, rgba(0,240,255,0.06) 0%, transparent 50%),
-                        radial-gradient(ellipse at 70% 50%, rgba(139,92,246,0.06) 0%, transparent 50%);
-            z-index: 0;
-            animation: bannerGlow 10s ease-in-out infinite alternate;
-        }
-        @keyframes bannerGlow {
-            0% {transform: translate(0, 0) scale(1);}
-            100% {transform: translate(2%, 2%) scale(1.05);}
-        }
-        .banner-content {position: relative; z-index: 1; max-width: 800px;}
-        .banner-badge {
-            display: inline-block;
-            padding: 0.4rem 1.2rem;
-            border: 1px solid var(--cyan);
-            border-radius: 20px;
-            font-size: 0.8rem;
-            color: var(--cyan);
-            letter-spacing: 2px;
-            margin-bottom: 2rem;
-            background: rgba(0,240,255,0.05);
-            animation: pulseBorder 2s ease-in-out infinite;
-        }
-        @keyframes pulseBorder {
-            0%, 100% {box-shadow: 0 0 5px rgba(0,240,255,0.2);}
-            50% {box-shadow: 0 0 20px rgba(0,240,255,0.4);}
-        }
-        .banner-title {
-            font-size: 3.5rem;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-        }
-        .banner-title .gradient-text {font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 4rem; display: block;}
-        .banner-title .sub-title {display: block; font-size: 1.8rem; font-weight: 300; color: var(--text-secondary); margin-top: 0.5rem;}
-        .banner-desc {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 2.5rem;
-            max-width: 600px;
-            border-left: 2px solid var(--cyan);
-            padding-left: 1.5rem;
-        }
-        .banner-stats {
-            display: flex; gap: 3rem; margin-bottom: 2.5rem;
-        }
-        .banner-stat {
-            text-align: center;
-        }
-        .banner-stat .num {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--cyan);
-            display: block;
-        }
-        .banner-stat .label {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            letter-spacing: 1px;
-        }
-        .banner-btns {display: flex; gap: 1.5rem;}
-        .btn-primary {
-            background: linear-gradient(135deg, var(--cyan), var(--blue));
-            color: #000;
-            padding: 0.9rem 2.5rem;
-            border-radius: 4px;
-            font-size: 1rem;
-            transition: all 0.3s;
-            font-weight: 700;
-            border: none;
-            cursor: pointer;
-            font-family: 'Noto Sans SC', sans-serif;
-            position: relative;
-            overflow: hidden;
-        }
-        .btn-primary::after {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.2), transparent 60%);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .btn-primary:hover::after {opacity: 1;}
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,240,255,0.3);
-        }
-        .btn-outline {
-            background: transparent;
-            color: var(--cyan);
-            padding: 0.9rem 2.5rem;
-            border: 1px solid var(--cyan);
-            border-radius: 4px;
-            font-size: 1rem;
-            transition: all 0.3s;
             font-weight: 600;
             cursor: pointer;
+            border: 1px solid transparent;
+            transition: all 0.3s;
             font-family: 'Noto Sans SC', sans-serif;
+            white-space: nowrap;
         }
-        .btn-outline:hover {
-            background: rgba(0,240,255,0.1);
-            box-shadow: 0 0 20px rgba(0,240,255,0.2), inset 0 0 20px rgba(0,240,255,0.05);
-            transform: translateY(-3px);
-        }
+        .btn-primary {background: var(--primary); color: #fff; border-color: var(--primary);}
+        .btn-primary:hover {background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(22,104,220,0.3);}
+        .btn-outline {background: transparent; color: var(--primary); border-color: var(--primary);}
+        .btn-outline:hover {background: var(--primary-light);}
+        .btn-light {background: #fff; color: var(--primary);}
+        .btn-light:hover {box-shadow: 0 8px 20px rgba(0,0,0,0.15); transform: translateY(-2px);}
+        .btn-lg {padding: 0.8rem 2.2rem; font-size: 1rem; border-radius: 8px;}
+        .mobile-menu {display: none; font-size: 1.4rem; cursor: pointer; color: var(--text);}
 
-        section {position: relative; z-index: 1;}
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
+        /* ========== 首屏 ========== */
+        .hero {
+            margin-top: 64px;
+            padding: 90px 0 60px;
             position: relative;
+            background:
+                radial-gradient(900px 420px at 12% 10%, rgba(22,104,220,0.08), transparent 60%),
+                radial-gradient(900px 420px at 88% 20%, rgba(0,179,199,0.08), transparent 60%),
+                linear-gradient(180deg, #f2f6fd 0%, #ffffff 100%);
+            overflow: hidden;
         }
-        .section-title .gradient-text {font-family: 'Orbitron', sans-serif; font-weight: 700;}
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--cyan), var(--blue), var(--purple));
-            border-radius: 2px;
-            box-shadow: 0 0 10px rgba(0,240,255,0.4);
+        .hero .container {display: flex; align-items: center; gap: 4rem;}
+        .hero-left {flex: 1.2;}
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 5px 14px;
+            border-radius: 20px;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            border: 1px solid rgba(22,104,220,0.15);
         }
-        .section-desc {
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto 4rem;
+        .hero-title {font-size: 3rem; font-weight: 900; line-height: 1.25; margin-bottom: 0.8rem;}
+        .hero-title em {font-style: normal; color: var(--primary);}
+        .hero-sub {font-size: 1.3rem; color: var(--text-2); font-weight: 400; margin-bottom: 1.2rem;}
+        .hero-desc {
+            color: var(--text-2);
+            font-size: 1.02rem;
+            max-width: 560px;
+            line-height: 1.9;
+            margin-bottom: 2rem;
+            border-left: 3px solid var(--primary);
+            padding-left: 1rem;
         }
-
-        .features {padding: 8rem 0; position: relative;}
-        .features::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--cyan), transparent);
-            opacity: 0.3;
+        .hero-btns {display: flex; gap: 1.2rem; margin-bottom: 2.5rem; flex-wrap: wrap;}
+        .hero-visual {
+            flex: 0.8;
+            display: flex; justify-content: center;
         }
-        .features-list {display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;}
-        .feature-card {
-            padding: 2rem;
-            background: var(--glass-card);
-            backdrop-filter: blur(var(--glass-blur));
-            -webkit-backdrop-filter: blur(var(--glass-blur));
+        .hero-panel {
+            width: 100%;
+            max-width: 420px;
+            background: rgba(255,255,255,0.7);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px 24px;
+            box-shadow: 0 20px 60px rgba(22,104,220,0.12);
+            backdrop-filter: blur(10px);
+        }
+        .hero-panel-top {display: flex; align-items: center; gap: 10px; margin-bottom: 18px;}
+        .hero-panel-dot {width: 12px; height: 12px; border-radius: 50%;}
+        .hero-panel-title {font-size: 0.95rem; font-weight: 700; flex: 1;}
+        .hero-ai-box {
+            background: linear-gradient(135deg, var(--primary-light), #e8f7f9);
             border-radius: 10px;
-            transition: all 0.4s;
-            border: 1px solid rgba(0,240,255,0.08);
+            padding: 18px;
+            margin-bottom: 14px;
+        }
+        .hero-ai-msg {font-size: 0.95rem; color: var(--text); margin-bottom: 8px;}
+        .hero-ai-msg b {color: var(--primary);}
+        .hero-ai-reply {font-size: 0.85rem; color: var(--text-2);}
+        .hero-feature-row {display: grid; grid-template-columns: 1fr 1fr; gap: 10px;}
+        .hero-feature-chip {
+            background: #fff; border: 1px solid var(--border);
+            border-radius: 8px; padding: 10px 12px;
+            font-size: 0.82rem; color: var(--text-2);
+            display: flex; align-items: center; gap: 8px;
+        }
+        .hero-feature-chip i {color: var(--primary); width: 16px; text-align: center;}
+
+        .hero-stats {
+            margin-top: 3rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 620px;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+        .hero-stat {padding: 20px 10px; text-align: center; border-right: 1px solid var(--border);}
+        .hero-stat:last-child {border-right: none;}
+        .hero-stat .num {font-size: 2rem; font-weight: 900; color: var(--primary); display: block; line-height: 1.2;}
+        .hero-stat .label {font-size: 0.85rem; color: var(--text-3);}
+
+        /* ========== AI 核心功能 ========== */
+        .features-grid {display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem;}
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.6rem;
+            transition: all 0.3s;
             position: relative;
             overflow: hidden;
         }
@@ -349,194 +237,200 @@
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 3px;
-            background: linear-gradient(90deg, var(--cyan), var(--blue), var(--purple));
+            background: linear-gradient(90deg, var(--primary), var(--cyan));
             transform: scaleX(0);
             transform-origin: left;
             transition: transform 0.4s;
         }
         .feature-card:hover::before {transform: scaleX(1);}
         .feature-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(0,240,255,0.25);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.4), 0 0 30px rgba(0,240,255,0.06);
-            background: var(--glass-card-hover);
+            transform: translateY(-6px);
+            border-color: rgba(22,104,220,0.35);
+            box-shadow: var(--shadow-hover);
         }
         .feature-card i {
-            font-size: 2rem;
-            color: var(--cyan);
-            margin-bottom: 1.2rem;
-            display: block;
-            text-shadow: 0 0 10px rgba(0,240,255,0.3);
-        }
-        .feature-card h3 {font-size: 1.3rem; margin-bottom: 0.8rem; color: var(--text-primary);}
-        .feature-card p {color: var(--text-secondary); line-height: 1.7; font-size: 0.95rem;}
-
-        .advantage {padding: 8rem 0; position: relative;}
-        .advantage::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--purple), transparent);
-            opacity: 0.3;
-        }
-        .advantage-content {display: flex; align-items: center; gap: 4rem;}
-        .advantage-text {flex: 1;}
-        .advantage-text h3 {
-            font-size: 2rem;
-            margin-bottom: 2.5rem;
-            background: linear-gradient(135deg, var(--cyan), var(--blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .advantage-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-            padding: 1.2rem;
-            background: var(--glass-card);
-            backdrop-filter: blur(var(--glass-blur));
-            -webkit-backdrop-filter: blur(var(--glass-blur));
+            font-size: 1.5rem;
+            color: var(--primary);
+            width: 48px; height: 48px;
+            display: flex; align-items: center; justify-content: center;
+            background: var(--primary-light);
             border-radius: 10px;
-            border: 1px solid rgba(0,240,255,0.08);
+            margin-bottom: 1rem;
+        }
+        .feature-card h3 {font-size: 1.05rem; margin-bottom: 0.5rem; color: var(--text);}
+        .feature-card p {color: var(--text-2); font-size: 0.88rem; line-height: 1.7;}
+
+        /* ========== 应用生态 ========== */
+        .ecosystem {padding: 90px 0;}
+        .eco-tabs {display: flex; justify-content: center; gap: 0.8rem; margin-bottom: 2.5rem; flex-wrap: wrap;}
+        .eco-tab {
+            padding: 0.55rem 1.5rem;
+            border-radius: 30px;
+            border: 1px solid var(--border);
+            background: #fff;
+            color: var(--text-2);
+            font-size: 0.92rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        .eco-tab.active, .eco-tab:hover {background: var(--primary); border-color: var(--primary); color: #fff;}
+        .eco-grid {display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem;}
+        .eco-item {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.4rem;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
             transition: all 0.3s;
         }
-        .advantage-item:hover {
-            transform: translateX(10px);
-            border-color: rgba(0,240,255,0.25);
-            box-shadow: 0 0 30px rgba(0,240,255,0.06);
-            background: var(--glass-card-hover);
+        .eco-item:hover {border-color: rgba(22,104,220,0.4); box-shadow: var(--shadow-hover); transform: translateY(-3px);}
+        .eco-item i {
+            width: 42px; height: 42px; flex-shrink: 0;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--primary-light), #e8f7f9);
+            color: var(--primary);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem;
         }
-        .advantage-item i {font-size: 1.3rem; color: var(--cyan); margin-top: 0.3rem; flex-shrink: 0;}
-        .advantage-item div h4 {font-size: 1.1rem; margin-bottom: 0.4rem; color: var(--text-primary);}
-        .advantage-item div p {color: var(--text-secondary); line-height: 1.7; font-size: 0.95rem;}
+        .eco-item h4 {font-size: 0.98rem; margin-bottom: 3px;}
+        .eco-item p {font-size: 0.8rem; color: var(--text-3); line-height: 1.5;}
 
-        .download {padding: 8rem 0; position: relative;}
-        .download::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--cyan), transparent);
-            opacity: 0.3;
+        /* ========== 解决方案 ========== */
+        .solution-grid {display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem;}
+        .solution-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem 1.6rem;
+            text-align: center;
+            transition: all 0.3s;
         }
-        .download-card {
-            max-width: 700px;
-            margin: 0 auto;
-            background: var(--glass-card);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(0,240,255,0.1);
+        .solution-card:hover {transform: translateY(-6px); box-shadow: var(--shadow-hover); border-color: rgba(22,104,220,0.35);}
+        .solution-card .icon {
+            width: 64px; height: 64px;
+            margin: 0 auto 1.2rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--cyan));
+            display: flex; align-items: center; justify-content: center;
+            color: #fff; font-size: 1.6rem;
+        }
+        .solution-card h3 {font-size: 1.15rem; margin-bottom: 0.6rem;}
+        .solution-card p {color: var(--text-2); font-size: 0.9rem; line-height: 1.7;}
+
+        /* ========== 新闻动态 ========== */
+        .news-grid {display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem;}
+        .news-item {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem 1.8rem;
+            display: flex;
+            gap: 1.2rem;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        .news-item:hover {border-color: rgba(22,104,220,0.4); box-shadow: var(--shadow-hover); transform: translateX(4px);}
+        .news-date {
+            flex-shrink: 0;
+            text-align: center;
+            padding: 10px 14px;
+            border-radius: 10px;
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+        .news-date b {display: block; font-size: 1.4rem; line-height: 1.1;}
+        .news-date span {font-size: 0.75rem;}
+        .news-item h3 {font-size: 1.02rem; margin-bottom: 4px; transition: color 0.3s;}
+        .news-item:hover h3 {color: var(--primary);}
+        .news-item p {font-size: 0.85rem; color: var(--text-3);}
+
+        /* ========== 下载 / 服务支持 ========== */
+        .support-banner {
+            background: linear-gradient(135deg, var(--primary), #0e4fb0 60%, var(--cyan));
             border-radius: 16px;
-            padding: 4rem;
+            padding: 3.5rem;
+            color: #fff;
             text-align: center;
             position: relative;
             overflow: hidden;
-            transition: all 0.3s;
         }
-        .download-card:hover {
-            box-shadow: 0 0 50px rgba(0,240,255,0.08);
-            border-color: rgba(0,240,255,0.25);
-            background: rgba(10,15,45,0.65);
-        }
-        .download-card::before {
+        .support-banner::before {
             content: '';
             position: absolute;
-            top: -2px; left: -2px;
-            right: -2px; bottom: -2px;
-            background: linear-gradient(135deg, var(--cyan), var(--blue), var(--purple), var(--cyan));
-            background-size: 400% 400%;
-            border-radius: 17px;
-            z-index: -1;
-            opacity: 0.3;
-            animation: borderGlow 4s ease-in-out infinite;
+            top: -60%; right: -20%;
+            width: 60%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15), transparent 60%);
         }
-        @keyframes borderGlow {
-            0%, 100% {background-position: 0% 50%;}
-            50% {background-position: 100% 50%;}
-        }
-        .download-card::after {
-            content: '';
-            position: absolute;
-            top: 1px; left: 1px;
-            right: 1px; bottom: 1px;
-            background: var(--bg-primary);
-            border-radius: 15px;
-            z-index: -1;
-        }
-        .download-card h3 {font-size: 2rem; margin-bottom: 0.5rem;}
-        .download-card h3 span {background: linear-gradient(135deg, var(--cyan), var(--blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;}
-        .download-card > p {color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.95rem;}
-        .download-tip {
-            background: rgba(10,15,40,0.35);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(0,240,255,0.1);
-            border-radius: 10px;
-            padding: 1.5rem 2rem;
-            margin: 1.5rem auto 2rem;
-            max-width: 580px;
-            text-align: left;
-            line-height: 1.8;
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-        }
-        .download-tip strong {color: var(--cyan);}
-        .download-tip a {color: var(--blue); word-break: break-all; text-decoration: underline;}
-        .download-btns {display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;}
-        .download-btn {
-            background: linear-gradient(135deg, var(--cyan), var(--blue));
-            color: #000;
-            padding: 1rem 2.5rem;
-            border-radius: 8px;
-            font-weight: 700;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            border: none;
-            cursor: pointer;
-            font-family: 'Noto Sans SC', sans-serif;
-        }
-        .download-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,240,255,0.3);
-        }
+        .support-banner h2 {font-size: 2rem; margin-bottom: 0.8rem; position: relative;}
+        .support-banner p {font-size: 1rem; opacity: 0.9; margin-bottom: 2rem; position: relative;}
+        .support-banner .btns {display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; position: relative;}
 
-        .feedback {padding: 8rem 0; position: relative;}
-        .feedback::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--purple), transparent);
-            opacity: 0.3;
-        }
-        .feedback-form {
-            max-width: 700px;
+        .download-card {
+            max-width: 760px;
             margin: 0 auto;
-            background: var(--glass-card);
-            backdrop-filter: blur(var(--glass-blur));
-            -webkit-backdrop-filter: blur(var(--glass-blur));
-            border: 1px solid rgba(0,240,255,0.08);
-            padding: 3rem;
-            border-radius: 12px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+        }
+        .download-card h3 {font-size: 1.4rem; margin-bottom: 0.6rem;}
+        .download-card h3 span {color: var(--primary);}
+        .download-card > p {color: var(--text-2); margin-bottom: 1.2rem; font-size: 0.95rem;}
+        .download-tip {
+            background: var(--bg-gray);
+            border: 1px dashed #c9d4e3;
+            border-radius: 10px;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.92rem;
+            color: var(--text-2);
+            line-height: 1.9;
+            text-align: left;
+        }
+        .download-tip strong {color: var(--text);}
+        .download-tip a {color: var(--primary); word-break: break-all; text-decoration: underline;}
+        .download-btns {display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;}
+        .support-channels {display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 2.5rem;}
+        .channel-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.8rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .channel-card:hover {transform: translateY(-4px); box-shadow: var(--shadow-hover);}
+        .channel-card i {font-size: 1.6rem; color: var(--primary); margin-bottom: 0.8rem; display: block;}
+        .channel-card h4 {margin-bottom: 0.4rem; font-size: 1.05rem;}
+        .channel-card p {font-size: 0.85rem; color: var(--text-3);}
+
+        /* ========== 反馈 ========== */
+        .feedback-form {
+            max-width: 720px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1.3rem;
         }
+        .form-row {display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem;}
+        .feedback-form label {display: block; margin-bottom: 0.4rem; color: var(--text-2); font-size: 0.9rem; font-weight: 500;}
         .feedback-form input,
         .feedback-form textarea {
             width: 100%;
-            padding: 0.9rem 1rem;
-            background: rgba(10,15,40,0.4);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(0,240,255,0.1);
-            border-radius: 6px;
-            color: var(--text-primary);
+            padding: 0.75rem 1rem;
+            background: var(--bg-gray);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
             font-size: 0.95rem;
             font-family: 'Noto Sans SC', sans-serif;
             transition: all 0.3s;
@@ -544,90 +438,81 @@
         }
         .feedback-form input:focus,
         .feedback-form textarea:focus {
-            border-color: var(--cyan);
-            box-shadow: 0 0 20px rgba(0,240,255,0.1);
-            background: rgba(10,15,45,0.5);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(22,104,220,0.12);
+            background: #fff;
         }
         .feedback-form input::placeholder,
-        .feedback-form textarea::placeholder {color: var(--text-secondary); opacity: 0.5;}
-        .feedback-form label {display: block; margin-bottom: 0.4rem; color: var(--text-secondary); font-size: 0.9rem;}
-        .form-row {display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;}
+        .feedback-form textarea::placeholder {color: var(--text-3);}
         .feedback-form button {cursor: pointer;}
 
-        .footer {padding: 4rem 0 2rem; border-top: 1px solid rgba(0,240,255,0.08); position: relative;}
-        .footer-content {display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem;}
-        .footer-logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--cyan), var(--blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
-        }
-        .footer-desc {color: var(--text-secondary); line-height: 1.6; margin-bottom: 2rem; font-size: 0.95rem;}
-        .footer-social {display: flex; gap: 1.5rem;}
-        .footer-social a {
-            font-size: 1.3rem;
-            color: var(--text-secondary);
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 1px solid rgba(0,240,255,0.1);
-        }
-        .footer-social a:hover {
-            color: var(--cyan);
-            border-color: var(--cyan);
-            box-shadow: 0 0 15px rgba(0,240,255,0.2);
-            transform: translateY(-3px);
-        }
-        .footer-col h4 {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            color: var(--text-primary);
-            border-bottom: 1px solid rgba(0,240,255,0.15);
-        }
-        .footer-col ul li {margin-bottom: 0.8rem;}
-        .footer-col ul li a {
-            color: var(--text-secondary);
-            transition: all 0.3s;
-            position: relative;
-            padding-left: 15px;
-            font-size: 0.9rem;
-        }
-        .footer-col ul li a:hover {color: var(--cyan);}
-        .footer-col ul li a::before {
-            content: '>';
-            position: absolute;
-            left: 0;
-            color: var(--cyan);
-            opacity: 0;
-            transition: all 0.3s;
-            font-family: 'Orbitron', sans-serif;
-        }
-        .footer-col ul li a:hover::before {opacity: 1; transform: translateX(3px);}
-        .footer-copyright {
+        /* ========== 关于我们 ========== */
+        .about {background: var(--bg-gray); padding: 90px 0;}
+        .about-content {display: flex; gap: 4rem; align-items: center;}
+        .about-text {flex: 1.3;}
+        .about-text h3 {font-size: 1.6rem; margin-bottom: 1rem; color: var(--text);}
+        .about-text p {color: var(--text-2); line-height: 1.9; margin-bottom: 1rem; font-size: 0.98rem;}
+        .about-stats {flex: 0.7; display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem;}
+        .about-stat {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.6rem;
             text-align: center;
-            color: var(--text-secondary);
-            padding-top: 2rem;
-            border-top: 1px solid rgba(0,240,255,0.06);
+        }
+        .about-stat .num {font-size: 1.8rem; font-weight: 900; color: var(--primary); display: block;}
+        .about-stat .label {font-size: 0.85rem; color: var(--text-3);}
+
+        /* ========== 页脚 ========== */
+        .footer {background: #101828; color: #c9d1de; padding: 60px 0 0;}
+        .footer-content {display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; padding-bottom: 3rem;}
+        .footer-logo {display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;}
+        .footer-logo-mark {
+            width: 32px; height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--primary), var(--cyan));
+            display: flex; align-items: center; justify-content: center;
+            color: #fff; font-weight: 900;
+        }
+        .footer-logo-text {font-size: 1.2rem; font-weight: 700; color: #fff;}
+        .footer-desc {color: #8b96a8; font-size: 0.9rem; line-height: 1.8; margin-bottom: 1rem;}
+        .footer-site {color: #8b96a8; font-size: 0.88rem; margin-bottom: 0.8rem;}
+        .footer-site a {color: #8b96a8; text-decoration: underline; word-break: break-all;}
+        .footer-site a:hover {color: var(--primary);}
+        .footer-accounts {color: #8b96a8; font-size: 0.8rem; margin-top: 0.8rem;}
+        .footer-accounts strong {color: #c9d1de;}
+        .footer-social {display: flex; gap: 0.8rem; margin-top: 0.4rem;}
+        .footer-social a {
+            width: 36px; height: 36px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.08);
+            display: flex; align-items: center; justify-content: center;
+            color: #c9d1de;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+        .footer-social a:hover {background: var(--primary); color: #fff;}
+        .footer-col h4 {color: #fff; font-size: 1rem; margin-bottom: 1.2rem; font-weight: 600;}
+        .footer-col ul li {margin-bottom: 0.7rem;}
+        .footer-col ul li a {color: #8b96a8; font-size: 0.9rem; transition: all 0.3s;}
+        .footer-col ul li a:hover {color: var(--primary);}
+        .footer-copyright {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 1.5rem 0;
+            text-align: center;
+            color: #6b7688;
             font-size: 0.85rem;
         }
+        .footer-copyright a {color: #8b96a8; margin: 0 8px;}
+        .footer-copyright a:hover {color: var(--primary);}
 
+        /* ========== 返回顶部 ========== */
         .back-to-top {
             position: fixed;
             bottom: 30px; right: 30px;
-            width: 50px; height: 50px;
-            background: rgba(10,15,40,0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            color: var(--cyan);
+            width: 46px; height: 46px;
+            background: var(--primary);
+            color: #fff;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -636,173 +521,287 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s;
-            border: 1px solid rgba(0,240,255,0.2);
+            box-shadow: 0 8px 20px rgba(22,104,220,0.3);
             z-index: 999;
+            border: none;
         }
         .back-to-top.active {opacity: 1; visibility: visible;}
-        .back-to-top:hover {
-            background: rgba(10,15,45,0.75);
-            box-shadow: 0 0 25px rgba(0,240,255,0.3);
-            border-color: rgba(0,240,255,0.4);
-            transform: translateY(-5px);
-        }
+        .back-to-top:hover {transform: translateY(-4px); background: var(--primary-dark);}
 
-        @media (max-width: 992px) {
-            .banner-title {font-size: 2.8rem;}
-            .banner-title .gradient-text {font-size: 3rem;}
-            .banner-title .sub-title {font-size: 1.4rem;}
-            .features-list {grid-template-columns: repeat(2, 1fr);}
-            .advantage-content {flex-direction: column;}
-            .footer-content {grid-template-columns: repeat(2, 1fr);}
-        }
+        .reveal {opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease;}
+        .reveal.in {opacity: 1; transform: translateY(0);}
+
+        /* ========== 响应式 ========== */
         @media (max-width: 1200px) {
-            .features-list {grid-template-columns: repeat(3, 1fr);}
+            .features-grid {grid-template-columns: repeat(3, 1fr);}
+            .eco-grid {grid-template-columns: repeat(3, 1fr);}
+            .solution-grid {grid-template-columns: repeat(2, 1fr);}
+            .footer-content {grid-template-columns: 2fr 1fr;}
         }
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
+            .hero .container {flex-direction: column; gap: 3rem;}
+            .hero-visual {width: 100%;}
+            .hero-title {font-size: 2.4rem;}
+            .features-grid {grid-template-columns: repeat(2, 1fr);}
+            .eco-grid {grid-template-columns: repeat(2, 1fr);}
+            .news-grid {grid-template-columns: 1fr;}
+            .support-channels {grid-template-columns: 1fr;}
+            .about-content {flex-direction: column;}
             .nav-menu {
                 display: none;
                 position: fixed;
-                top: 0; right: -100%;
-                width: 75%;
-                height: 100vh;
-                background: rgba(10,10,30,0.7);
-                backdrop-filter: blur(30px);
-                -webkit-backdrop-filter: blur(30px);
-                border-right: 1px solid var(--glass-border);
+                top: 64px; left: 0; right: 0;
+                background: #fff;
+                border-bottom: 1px solid var(--border);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.08);
                 flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 2.5rem;
-                transition: right 0.4s ease;
-                border-left: 1px solid var(--glass-border);
+                padding: 1rem 0;
+                gap: 0;
             }
-            .nav-menu.active {right: 0; display: flex;}
-            .nav-menu a {font-size: 1.2rem; color: var(--text-primary);}
-            .nav-buttons {gap: 0.5rem;}
-            .nav-btn {padding: 0.4rem 1rem; font-size: 0.85rem;}
+            .nav-menu.active {display: flex;}
+            .nav-menu a {padding: 0.8rem 5%; display: block;}
+            .nav-menu a::after {display: none;}
             .mobile-menu {display: block;}
-            .banner-title {font-size: 2.2rem;}
-            .banner-title .gradient-text {font-size: 2.4rem;}
-            .banner-title .sub-title {font-size: 1.2rem;}
-            .banner-stats {gap: 1.5rem;}
-            .banner-stat .num {font-size: 1.5rem;}
-            .section-title {font-size: 2rem;}
-            .features-list {grid-template-columns: 1fr;}
-            .download-card {padding: 2.5rem 1.5rem;}
-            .download-btns {flex-direction: column; align-items: center;}
-            .download-btn {width: 100%; max-width: 280px; justify-content: center;}
-            .advantage-item {flex-direction: column; align-items: flex-start; gap: 1rem;}
-            .form-row {grid-template-columns: 1fr;}
-            .footer-content {grid-template-columns: 1fr; gap: 2rem;}
-            .back-to-top {width: 40px; height: 40px; bottom: 20px; right: 20px;}
         }
         @media (max-width: 576px) {
-            .banner-title {font-size: 1.8rem;}
-            .banner-title .gradient-text {font-size: 2rem;}
-            .banner-title .sub-title {font-size: 1rem;}
-            .section-title {font-size: 1.6rem;}
-            .nav-logo {font-size: 1.3rem;}
-            .banner-btns {flex-direction: column; align-items: center; gap: 1rem;}
-            .btn-primary, .btn-outline {width: 100%; max-width: 220px; text-align: center;}
-            .banner-stats {flex-wrap: wrap; justify-content: center;}
+            .section {padding: 60px 0;}
+            .section-title {font-size: 1.7rem;}
+            .hero {padding: 60px 0 40px;}
+            .hero-title {font-size: 1.9rem;}
+            .hero-stats {grid-template-columns: 1fr;}
+            .hero-stat {border-right: none; border-bottom: 1px solid var(--border);}
+            .hero-stat:last-child {border-bottom: none;}
+            .features-grid, .eco-grid, .solution-grid {grid-template-columns: 1fr;}
+            .form-row {grid-template-columns: 1fr;}
+            .download-card {padding: 1.5rem;}
+            .support-banner {padding: 2.5rem 1.5rem;}
+            .footer-content {grid-template-columns: 1fr; gap: 2rem;}
+            .back-to-top {width: 40px; height: 40px; bottom: 20px; right: 20px;}
         }
     </style>
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-<canvas id="particles-canvas"></canvas>
-<div class="grid-overlay"></div>
-<div class="scanline"></div>
-
 <nav class="nav">
     <div class="container">
-        <div class="nav-logo">&lt;TSAI-OS/&gt;</div>
-        <ul class="nav-menu">
-            <li><a href="#home">首页</a></li>
-            <li><a href="#features">AI 特性</a></li>
-            <li><a href="#advantage">核心优势</a></li>
-            <li><a href="#download">下载</a></li>
-            <li><a href="#feedback">反馈</a></li>
-            <li><a href="#about">关于</a></li>
-        </ul>
-        <div class="nav-buttons">
-            <a href="https://lugui906.github.io/help" target="_blank" class="nav-btn">获取帮助</a>
-            <button class="nav-btn">了解更多</button>
+        <div class="nav-logo">
+            <div class="nav-logo-mark">TS</div>
+            <div class="nav-logo-text">TSAI-OS 12<small>aim-ai 核心 2.0</small></div>
         </div>
-        <div class="mobile-menu"><i class="fas fa-bars"></i></div>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#home" class="active">首页</a></li>
+            <li><a href="#features">AI 核心功能</a></li>
+            <li><a href="#apps">应用生态</a></li>
+            <li><a href="#solutions">解决方案</a></li>
+            <li><a href="#news">新闻动态</a></li>
+            <li><a href="#support">服务支持</a></li>
+            <li><a href="#about">关于我们</a></li>
+        </ul>
+        <div class="nav-right">
+            <a href="https://lugui906.github.io/help" target="_blank" class="btn btn-outline">获取帮助</a>
+            <a href="#download" class="btn btn-primary">下载中心</a>
+            <div class="mobile-menu"><i class="fas fa-bars"></i></div>
+        </div>
     </div>
 </nav>
 
-<section class="banner" id="home">
+<!-- ========== 首页首屏 ========== -->
+<section class="hero" id="home">
     <div class="container">
-        <div class="banner-content">
-            <div class="banner-badge">✦ aim-ai 核心 2.0</div>
-            <h1 class="banner-title">
-                <span class="gradient-text">TSAI-OS</span>
-                <span class="sub-title">AI 驱动 · 万物互联 · 智能原生</span>
-            </h1>
-            <p class="banner-desc">
-                aim-ai 核心 2.0 · AI键鼠操控 · ChinAI2.0<br>
-                AI 命令行 · Trae 代码 · Solo 工作 · AI 内存管理 · AI 定时任务<br>
-                AI 编辑器 · AI 智能体 · AI 语音交互 · AI 任务栏搜索 · 多品牌设备互联<br>
-                本地模型 / 云端
+        <div class="hero-left">
+            <div class="hero-badge"><i class="fas fa-star"></i> aim-ai 核心 2.0 全新升级</div>
+            <h1 class="hero-title">TSAI-OS <em>12</em><br>AI 桌面操作系统</h1>
+            <p class="hero-sub">智能原生 · 更懂你的系统</p>
+            <p class="hero-desc">
+                aim-ai 核心 2.0 · 35+ AI 功能全面赋能<br>
+                AI 命令行 · Trae 代码 · Solo 工作 · AI 定时任务<br>
+                AI 编辑器 · AI 智能体 · AI 语音交互 · AI 任务栏搜索<br>
+                隔空手势 · Office AI 伴侣 · 本地模型 / 云端双引擎
             </p>
-            <div class="banner-stats">
-                <div class="banner-stat"><span class="num" data-target="20">0</span><span class="label">+ AI 智能体</span></div>
-                <div class="banner-stat"><span class="num" data-target="10">0</span><span class="label">+ 品牌设备互联</span></div>
-                <div class="banner-stat"><span class="num" data-target="2">0</span><span class="label">模型引擎 (本地+云端)</span></div>
+            <div class="hero-btns">
+                <a href="#download" class="btn btn-primary btn-lg"><i class="fas fa-download"></i> 立即下载</a>
+                <a href="#features" class="btn btn-outline btn-lg">探索 AI 功能</a>
             </div>
-            <div class="banner-btns">
-                <a href="#download" class="btn-primary">立即下载</a>
-                <a href="#features" class="btn-outline">探索 AI 特性</a>
+            <div class="hero-stats">
+                <div class="hero-stat"><span class="num" data-target="35">0</span><span class="label">+ AI 功能</span></div>
+                <div class="hero-stat"><span class="num" data-target="2">0</span><span class="label">模型引擎 (本地+云端)</span></div>
+                <div class="hero-stat"><span class="num" data-target="100">0</span><span class="label">% 开源开放</span></div>
             </div>
         </div>
-    </div>
-</section>
-
-<section class="features" id="features">
-    <div class="container">
-        <h2 class="section-title"><span class="gradient-text">AI 核心特性</span></h2>
-        <p class="section-desc">aim-ai 核心 2.0 引擎驱动，20+ AI 智能体全面赋能操作系统，打造真正智能的原生体验</p>
-        <div class="features-list">
-            <div class="feature-card"><i class="fas fa-brain"></i><h3>ai键鼠操控</h3><p>内核级别事件模拟，仿人类式按钮点击，支持多语言输入，支持复杂窗口点击，底层代码识别+OCR文字读取，准确度高。</p></div>
-            <div class="feature-card"><i class="fas fa-link"></i><h3>多品牌设备互联</h3><p>支持 10+ 品牌智能设备一键互联，手机、平板、IoT 跨屏协同，数据无缝流转。</p></div>
-            <div class="feature-card"><i class="fas fa-memory"></i><h3>AI 内存管理</h3><p>AI 动态预测应用内存需求，智能预加载/回收，内存利用率提升 60%，告别卡顿。</p></div>
-            <div class="feature-card"><i class="fas fa-glass-whiskey"></i><h3>毛玻璃界面</h3><p>应用菜单与任务栏采用全新毛玻璃 (Acrylic) 特效，半透明层次感搭配实时桌面模糊，视觉深邃而优雅。</p></div>
-            <div class="feature-card"><i class="fas fa-clock"></i><h3>AI 定时任务</h3><p>自然语言创建定时任务："每天下班前备份文件"，AI 自动解析执行，省心省力。</p></div>
-            <div class="feature-card"><i class="fas fa-pen-fancy"></i><h3>AI 编辑器</h3><p>智能代码补全、实时翻译、文档生成、Bug 检测，支持多种编程语言，开发效率翻倍。</p></div>
-            <div class="feature-card"><i class="fas fa-robot"></i><h3>AI 智能体</h3><p>20+ 专业智能体覆盖办公、编程、设计、学习等场景，对话即服务，随叫随到。</p></div>
-            <div class="feature-card"><i class="fas fa-microphone"></i><h3>AI 语音交互</h3><p>离线/在线双模语音识别，自然对话式操作，"打开项目编译运行"一句话完成。</p></div>
-            <div class="feature-card"><i class="fas fa-search"></i><h3>AI 任务栏搜索</h3><p>全局智能搜索框，搜文件、搜应用、搜网页、问 AI，一次输入全部搞定。</p></div>
-            <div class="feature-card"><i class="fas fa-eye-slash"></i><h3>AI 防窥屏</h3><p>AI 实时人脸检测，屏幕前无人自动模糊/锁屏，有人靠近立即提醒，隐私安全无忧。</p></div>
-            <div class="feature-card"><i class="fas fa-terminal"></i><h3>AI 命令行</h3><p>自然语言转命令："找出上个月修改过的 Python 文件并打包"，AI 理解意图自动执行。</p></div>
-            <div class="feature-card"><i class="fas fa-braces"></i><h3>Trae 代码</h3><p>集成 Trae AI 编程助手，对话式代码生成、智能重构、Bug 修复，像与资深工程师结对编程。</p></div>
-            <div class="feature-card"><i class="fas fa-user-cog"></i><h3>Solo 工作</h3><p>专为独立开发者打造的 AI 工作流：自动搭建项目、编写文档、部署上线，一个人就是一个团队。</p></div>
-        </div>
-    </div>
-</section>
-
-<section class="advantage" id="advantage">
-    <div class="container">
-        <div class="advantage-content">
-            <div class="advantage-text">
-                <h3>为什么选择 TSAI-OS？</h3>
-                <div class="advantage-item"><i class="fas fa-check-circle"></i><div><h4>本地模型 + 云端双擎</h4><p>敏感数据本地处理，复杂任务云端加速。支持 ollama / qwen 等主流模型，离线也能智能在线。</p></div></div>
-                <div class="advantage-item"><i class="fas fa-check-circle"></i><div><h4>真正的 AI 原生系统</h4><p>不是套壳应用，AI 深度融入系统底层：内存调度、文件管理、任务计划全部由 AI 驱动。</p></div></div>
-                <div class="advantage-item"><i class="fas fa-check-circle"></i><div><h4>Trae 代码 + Solo 工作流</h4><p>集成 Trae AI 编程助手，对话生成代码与修复 Bug；Solo 模式自动搭建部署，一人抵一队。</p></div></div>
-                <div class="advantage-item"><i class="fas fa-check-circle"></i><div><h4>多设备无缝互联</h4><p>手机、平板、PC、智能家居跨品牌跨平台互联，文件互传、通知同步、剪贴板共享。</p></div></div>
-                <div class="advantage-item"><i class="fas fa-glass-whiskey"></i><div><h4>毛玻璃界面 · 应用菜单 & 任务栏</h4><p>应用菜单与任务栏采用 Acrylic 毛玻璃特效，实时桌面模糊渲染，半透明质感让操作界面更具科技感与深度。</p></div></div>
+        <div class="hero-visual">
+            <div class="hero-panel">
+                <div class="hero-panel-top">
+                    <span class="hero-panel-dot" style="background:#ff5f56;"></span>
+                    <span class="hero-panel-dot" style="background:#ffbd2e;"></span>
+                    <span class="hero-panel-dot" style="background:#27c93f;"></span>
+                    <span class="hero-panel-title">AI 助手</span>
+                    <i class="fas fa-robot" style="color:var(--primary);"></i>
+                </div>
+                <div class="hero-ai-box">
+                    <p class="hero-ai-msg">"帮我整理今天的会议纪要，并生成 PPT 大纲"</p>
+                    <p class="hero-ai-reply"><i class="fas fa-sparkles" style="color:var(--primary);"></i> 好的，已自动生成纪要要点，PPT 大纲已备好……</p>
+                </div>
+                <div class="hero-feature-row">
+                    <div class="hero-feature-chip"><i class="fas fa-hand-paper"></i> 隔空手势</div>
+                    <div class="hero-feature-chip"><i class="fas fa-closed-captioning"></i> AI 实时字幕</div>
+                    <div class="hero-feature-chip"><i class="fas fa-file-word"></i> Office AI 伴侣</div>
+                    <div class="hero-feature-chip"><i class="fas fa-database"></i> AI 知识库</div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="download" id="download">
+<!-- ========== AI 核心功能 ========== -->
+<section class="section" id="features">
     <div class="container">
-        <div class="download-card">
-            <h3>获取 <span>TSAI-OS 11</span> 26.07版本</h3>
-            <p>aim-ai 核心 2.0 · 仅支持 x86_64 · 仅支持 UEFI</p>
+        <h2 class="section-title">AI <span>核心功能</span></h2>
+        <div class="section-line"></div>
+        <p class="section-desc">aim-ai 核心 2.0 引擎驱动，35+ AI 功能全面赋能操作系统，办公、开发、学习、交互全覆盖，打造真正智能的原生体验</p>
+        <div class="features-grid">
+            <div class="feature-card reveal"><i class="fas fa-brain"></i><h3>AI 界面自动化</h3><p>智能理解应用界面，自动完成点击与输入操作，支持多语言文字识别，把重复繁琐的鼠标键盘操作交给 AI。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-glass-whiskey"></i><h3>毛玻璃界面</h3><p>应用菜单与任务栏采用全新毛玻璃 (Acrylic) 特效，半透明层次感搭配实时桌面模糊，视觉深邃而优雅。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-clock"></i><h3>AI 定时任务</h3><p>自然语言创建定时任务："每天下班前备份文件"，AI 自动解析执行，省心省力。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-pen-fancy"></i><h3>AI 编辑器</h3><p>智能代码补全、实时翻译、文档生成、Bug 检测，支持多种编程语言，让开发更高效。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-robot"></i><h3>AI 智能体</h3><p>35+ AI 功能覆盖办公、编程、设计、学习等场景，对话即服务，随叫随到。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-microphone"></i><h3>AI 语音交互</h3><p>离线/在线双模语音识别，自然对话式操作，"打开项目编译运行"一句话完成。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-search"></i><h3>AI 任务栏搜索</h3><p>全局智能搜索框，搜文件、搜应用、搜网页、问 AI，一次输入全部搞定。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-terminal"></i><h3>AI 命令行</h3><p>自然语言转命令："找出上个月修改过的 Python 文件并打包"，AI 理解意图自动执行。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-braces"></i><h3>Trae 代码</h3><p>集成 Trae AI 编程助手，对话式代码生成、智能重构、Bug 修复，像与资深工程师结对编程。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-user-cog"></i><h3>Solo 工作</h3><p>专为独立开发者打造的 AI 工作流：自动搭建项目、编写文档、部署上线，单人也能顺畅完成全流程开发。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-database"></i><h3>AI 知识库</h3><p>基于 aim 的本地知识库对话工具，导入资料即问即答，文档检索、问答整合一键完成。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-closed-captioning"></i><h3>AI 实时字幕</h3><p>系统级实时语音字幕，Whisper 本地模型离线转写，看视频、开会不再靠听。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-comment-dots"></i><h3>本地 AI 助手</h3><p>内置 qwen3 本地模型，离线即可对话问答，隐私数据不出本机；另有 WebAI 网页版随时可用。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-cogs"></i><h3>AI 模型管理</h3><p>一键切换、安装 Ollama 模型，自定义 API Provider，本地/云端模型随需调配。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-file-contract"></i><h3>AI 会议概括</h3><p>会议录音自动转文字并生成要点概括，长会一键出纪要，重点不遗漏。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-chart-line"></i><h3>Token 管理</h3><p>实时监控 token 用量与费用，AI 限额一目了然，支持多设备同步。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-sticky-note"></i><h3>AI 记事本</h3><p>AI 增强的文本编辑工具，随手记录，智能续写、整理、润色一步到位。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-eye-slash"></i><h3>AI 防窥屏</h3><p>后台智能检测多人脸窥屏行为，触发时自动弹出告警弹窗，屏幕内容隐私更有保障。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-mobile-alt"></i><h3>手机连接</h3><p>电脑与手机轻松连接互通，手机版一键获取、扫码配对，协同更顺畅。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-scroll"></i><h3>AIS 解释器</h3><p>运行 AIS 自然语言脚本，一句句日常描述直接转成可执行脚本，编程零门槛。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-hand-paper"></i><h3>隔空手势</h3><p>手掌隔空控制电脑：上下滑动滚动页面、前推播放/暂停，纯本地离线推理，无接触操控更自由。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-bolt"></i><h3>AI 助手</h3><p>全局随时召唤的桌面 AI 助手，支持截图提问、快捷唤醒、上下文感知，一问即答。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-folder-open"></i><h3>AI 文件对话</h3><p>在文件管理器中直接选中文件与 AI 对话，右键即可提问，文档理解无缝集成。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-network-wired"></i><h3>局域网 AI 共享</h3><p>局域网内共享 AI 服务，同一网络的设备都能调用；附带局域网文件、视频在线分享。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-compass"></i><h3>BrowserOS 浏览器</h3><p>内置 BrowserOS 网页浏览，轻快流畅的桌面浏览器体验，日常上网更顺手。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-toolbox"></i><h3>AI 电脑管家</h3><p>系统管理与优化一站式工具，进程、磁盘、网络状态一目了然，AI 命令一键执行，让系统保持清爽。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-file-word"></i><h3>Office AI 伴侣</h3><p>深度集成 LibreOffice 办公套件，AI 帮你改文档、写 PPT、做表格，排版润色自动完成，办公更省心。</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 应用生态 ========== -->
+<section class="ecosystem alt" id="apps">
+    <div class="container">
+        <h2 class="section-title">AI <span>应用生态</span></h2>
+        <div class="section-line"></div>
+        <p class="section-desc">覆盖办公、开发、系统与创新交互四大场景，AI 能力随处可用、开箱即用</p>
+        <div class="eco-tabs" id="ecoTabs">
+            <button class="eco-tab active" data-group="office">智慧办公</button>
+            <button class="eco-tab" data-group="dev">智能开发</button>
+            <button class="eco-tab" data-group="sys">AI 系统能力</button>
+            <button class="eco-tab" data-group="innov">创新交互</button>
+        </div>
+        <div class="eco-grid" id="ecoGrid">
+            <div class="eco-item" data-group="office"><i class="fas fa-file-word"></i><div><h4>Office AI 伴侣</h4><p>改文档、写 PPT、做表格</p></div></div>
+            <div class="eco-item" data-group="office"><i class="fas fa-file-contract"></i><div><h4>AI 会议概括</h4><p>会议录音一键出纪要</p></div></div>
+            <div class="eco-item" data-group="office"><i class="fas fa-database"></i><div><h4>AI 知识库</h4><p>导入资料即问即答</p></div></div>
+            <div class="eco-item" data-group="office"><i class="fas fa-sticky-note"></i><div><h4>AI 记事本</h4><p>随手记录智能整理</p></div></div>
+            <div class="eco-item" data-group="office"><i class="fas fa-closed-captioning"></i><div><h4>AI 实时字幕</h4><p>离线语音实时转写</p></div></div>
+            <div class="eco-item" data-group="office"><i class="fas fa-clock"></i><div><h4>AI 定时任务</h4><p>自然语言自动执行</p></div></div>
+            <div class="eco-item" data-group="office"><i class="fas fa-folder-open"></i><div><h4>AI 文件对话</h4><p>文件管理器内直接提问</p></div></div>
+            <div class="eco-item" data-group="dev"><i class="fas fa-braces"></i><div><h4>Trae 代码</h4><p>对话式 AI 编程助手</p></div></div>
+            <div class="eco-item" data-group="dev"><i class="fas fa-user-cog"></i><div><h4>Solo 工作</h4><p>独立开发全流程工作流</p></div></div>
+            <div class="eco-item" data-group="dev"><i class="fas fa-pen-fancy"></i><div><h4>AI 编辑器</h4><p>补全翻译文档生成</p></div></div>
+            <div class="eco-item" data-group="dev"><i class="fas fa-terminal"></i><div><h4>AI 命令行</h4><p>自然语言转命令</p></div></div>
+            <div class="eco-item" data-group="dev"><i class="fas fa-scroll"></i><div><h4>AIS 解释器</h4><p>自然语言脚本编程</p></div></div>
+            <div class="eco-item" data-group="dev"><i class="fas fa-brain"></i><div><h4>AI 界面自动化</h4><p>自动点击输入自动化</p></div></div>
+            <div class="eco-item" data-group="dev"><i class="fas fa-chart-line"></i><div><h4>Token 管理</h4><p>用量费用实时监控</p></div></div>
+            <div class="eco-item" data-group="sys"><i class="fas fa-bolt"></i><div><h4>AI 助手</h4><p>全局召唤截图提问</p></div></div>
+            <div class="eco-item" data-group="sys"><i class="fas fa-robot"></i><div><h4>AI 智能体</h4><p>35+ AI 功能全覆盖</p></div></div>
+            <div class="eco-item" data-group="sys"><i class="fas fa-comment-dots"></i><div><h4>本地 AI 助手</h4><p>qwen3 离线对话</p></div></div>
+            <div class="eco-item" data-group="sys"><i class="fas fa-microphone"></i><div><h4>AI 语音交互</h4><p>一句话完成操作</p></div></div>
+            <div class="eco-item" data-group="sys"><i class="fas fa-cogs"></i><div><h4>AI 模型管理</h4><p>一键切换安装模型</p></div></div>
+            <div class="eco-item" data-group="sys"><i class="fas fa-search"></i><div><h4>AI 任务栏搜索</h4><p>全局智能搜索框</p></div></div>
+            <div class="eco-item" data-group="sys"><i class="fas fa-glass-whiskey"></i><div><h4>毛玻璃界面</h4><p>Acrylic 桌面特效</p></div></div>
+            <div class="eco-item" data-group="innov"><i class="fas fa-hand-paper"></i><div><h4>隔空手势</h4><p>手掌隔空控制电脑</p></div></div>
+            <div class="eco-item" data-group="innov"><i class="fas fa-eye-slash"></i><div><h4>AI 防窥屏</h4><p>窥屏检测告警</p></div></div>
+            <div class="eco-item" data-group="innov"><i class="fas fa-toolbox"></i><div><h4>AI 电脑管家</h4><p>系统管理一键优化</p></div></div>
+            <div class="eco-item" data-group="innov"><i class="fas fa-mobile-alt"></i><div><h4>手机连接</h4><p>手机电脑轻松互通</p></div></div>
+            <div class="eco-item" data-group="innov"><i class="fas fa-network-wired"></i><div><h4>局域网 AI 共享</h4><p>局域网 AI 与文件共享</p></div></div>
+            <div class="eco-item" data-group="innov"><i class="fas fa-compass"></i><div><h4>BrowserOS 浏览器</h4><p>轻快桌面浏览器</p></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 解决方案 ========== -->
+<section class="section" id="solutions">
+    <div class="container">
+        <h2 class="section-title">行业 <span>解决方案</span></h2>
+        <div class="section-line"></div>
+        <p class="section-desc">无论办公、开发还是学习创作，TSAI-OS 12 都能以 AI 能力提供针对性解决方案</p>
+        <div class="solution-grid">
+            <div class="solution-card reveal">
+                <div class="icon"><i class="fas fa-briefcase"></i></div>
+                <h3>高效办公</h3>
+                <p>会议纪要自动生成、文档 AI 改写、PPT 一键出稿、实时字幕翻译，Office AI 伴侣随叫随到，让办公效率持续在线。</p>
+            </div>
+            <div class="solution-card reveal">
+                <div class="icon"><i class="fas fa-code"></i></div>
+                <h3>独立开发</h3>
+                <p>Trae 代码 + Solo 工作流，对话生成代码、自动修复 Bug、一键搭建部署，一个人也能完成完整的软件开发流程。</p>
+            </div>
+            <div class="solution-card reveal">
+                <div class="icon"><i class="fas fa-graduation-cap"></i></div>
+                <h3>学习创作</h3>
+                <p>AI 知识库沉淀资料、AI 文件对话随时提问、AI 记事本智能整理，学习与研究资料信手拈来，创作灵感不断。</p>
+            </div>
+            <div class="solution-card reveal">
+                <div class="icon"><i class="fas fa-house-user"></i></div>
+                <h3>智能互联</h3>
+                <p>手机电脑轻松连接、局域网内共享 AI 与文件，设备与能力随取随用，多端协同无缝流转。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 新闻动态 ========== -->
+<section class="section alt" id="news">
+    <div class="container">
+        <h2 class="section-title">新闻 <span>动态</span></h2>
+        <div class="section-line"></div>
+        <p class="section-desc">了解 TSAI-OS 最新版本更新与功能动态</p>
+        <div class="news-grid">
+            <a href="#" class="news-item reveal">
+                <div class="news-date"><b>12</b><span>2026.08</span></div>
+                <div><h3>TSAI-OS 12 正式发布，aim-ai 核心 2.0 全新升级</h3><p>35+ AI 功能全面赋能，打造智能原生桌面操作系统新体验</p></div>
+            </a>
+            <a href="#" class="news-item reveal">
+                <div class="news-date"><b>09</b><span>2026.08</span></div>
+                <div><h3>隔空手势功能正式上线</h3><p>手掌隔空控制电脑，上下滑动滚动、前推播放/暂停，无接触操控更自由</p></div>
+            </a>
+            <a href="#" class="news-item reveal">
+                <div class="news-date"><b>05</b><span>2026.08</span></div>
+                <div><h3>AI 会议概括开放使用</h3><p>会议录音自动转文字并生成要点概括，长会一键出纪要</p></div>
+            </a>
+            <a href="#" class="news-item reveal">
+                <div class="news-date"><b>01</b><span>2026.08</span></div>
+                <div><h3>Office AI 伴侣集成完成</h3><p>深度集成 LibreOffice，改文档、写 PPT、做表格更省心</p></div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 服务支持 ========== -->
+<section class="section" id="support">
+    <div class="container">
+        <h2 class="section-title">服务 <span>支持</span></h2>
+        <div class="section-line"></div>
+        <p class="section-desc">完善的下载渠道与服务体系，让安装、使用、反馈全程无忧</p>
+        <div class="download-card" id="download">
+            <h3>获取 <span>TSAI-OS 12</span> 26.07 版本</h3>
+            <p>aim-ai 核心 2.0 · 基于 Linux 的 AI 原生桌面操作系统</p>
             <div class="download-tip">
                 <strong>下载说明：</strong><br>
                 1. 请下载 <strong>2 个分卷压缩包</strong>，不要只下载一个<br>
@@ -814,17 +813,25 @@
                 复制内容打开 <strong>中国移动云盘手机 APP</strong>，操作更方便哦
             </div>
             <div class="download-btns">
-                <a href=https://yun.139.com/shareweb/#/w/i/2wFG9U0RzCbrl target="_blank" class="download-btn">
+                <a href="https://yun.139.com/shareweb/#/w/i/2wFG9U0RzCbrl" target="_blank" class="btn btn-primary btn-lg">
                     <i class="fas fa-cloud-download-alt"></i> 打开云盘下载
                 </a>
+                <a href="https://lugui906.github.io/help" target="_blank" class="btn btn-outline btn-lg">查看使用帮助</a>
             </div>
+        </div>
+        <div class="support-channels">
+            <div class="channel-card reveal"><i class="fas fa-book-open"></i><h4>帮助中心</h4><p>安装、使用、常见问题一站式文档</p></div>
+            <div class="channel-card reveal"><i class="fas fa-headset"></i><h4>在线支持</h4><p>使用中遇到问题，随时获取人工支持</p></div>
+            <div class="channel-card reveal"><i class="fas fa-comments"></i><h4>用户反馈</h4><p>您的意见是我们持续打磨的动力</p></div>
         </div>
     </div>
 </section>
 
-<section class="feedback" id="feedback">
+<!-- ========== 用户反馈 ========== -->
+<section class="section alt" id="feedback">
     <div class="container">
-        <h2 class="section-title"><span class="gradient-text">用户反馈</span></h2>
+        <h2 class="section-title">用户 <span>反馈</span></h2>
+        <div class="section-line"></div>
         <p class="section-desc">您的反馈对我们非常重要，帮助我们持续打磨，让 TSAI-OS 更智能</p>
         <form class="feedback-form" id="feedbackForm">
             <div class="form-row">
@@ -833,120 +840,98 @@
             </div>
             <div><label for="subject">主题</label><input type="text" id="subject" placeholder="请输入反馈主题"></div>
             <div><label for="message">反馈内容</label><textarea id="message" rows="5" placeholder="请详细描述您的问题或建议"></textarea></div>
-            <button type="submit" class="btn-primary">提交反馈</button>
+            <button type="submit" class="btn btn-primary btn-lg">提交反馈</button>
         </form>
-        <div id="feedbackSuccess" style="display:none;margin-top:2rem;padding:1rem;background:rgba(0,240,255,0.1);border:1px solid rgba(0,240,255,0.3);border-radius:4px;text-align:center;color:var(--cyan);">
+        <div id="feedbackSuccess" style="display:none;margin-top:2rem;padding:1rem;background:#e8f7e8;border:1px solid #67c23a;border-radius:8px;text-align:center;color:#529b2e;">
             <i class="fas fa-check-circle" style="font-size:1.5rem;"></i>
             <p>反馈提交成功！我们会尽快处理。</p>
         </div>
     </div>
 </section>
 
-<footer class="footer" id="about">
+<!-- ========== 关于我们 ========== -->
+<section class="about" id="about">
+    <div class="container">
+        <div class="about-content">
+            <div class="about-text">
+                <h3>关于 <span style="color:var(--primary);">TSAI-OS</span></h3>
+                <p>TSAI-OS 是一款基于 Linux 的 AI 原生桌面操作系统，由 TurtleSoft 团队打造。aim-ai 核心 2.0 引擎驱动 35+ AI 功能，让办公、开发、学习与日常使用都更智能、更省心。</p>
+                <p>我们坚持本地模型优先，敏感数据不出本机；同时支持云端模型加速，本地/云端随需调配。开源开放，生态共建，让计算真正智能。</p>
+                <a href="#download" class="btn btn-primary">下载体验</a>
+            </div>
+            <div class="about-stats">
+                <div class="about-stat"><span class="num">35+</span><span class="label">AI 功能</span></div>
+                <div class="about-stat"><span class="num">2</span><span class="label">模型引擎</span></div>
+                <div class="about-stat"><span class="num">4</span><span class="label">应用场景</span></div>
+                <div class="about-stat"><span class="num">7×24</span><span class="label">AI 守护</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 页脚 ========== -->
+<footer class="footer">
     <div class="container">
         <div class="footer-content">
-            <div class="footer-col">
-                <div class="footer-logo">&lt;TSAI-OS/&gt;</div>
-                <p class="footer-desc">aim-ai 核心 2.0 驱动的 AI 原生操作系统，20+ AI 智能体，多品牌设备互联，本地+云端双引擎，让计算真正智能。</p>
-                <div class="footer-social"><a href="#"><i class="fab fa-github"></i></a></div>
+            <div class="footer-col" style="grid-column: span 1;">
+                <div class="footer-logo">
+                    <div class="footer-logo-mark">TS</div>
+                    <div class="footer-logo-text">TSAI-OS 12</div>
+                </div>
+                <p class="footer-desc">aim-ai 核心 2.0 驱动的 AI 原生桌面操作系统，35+ AI 功能，本地+云端双引擎，让计算真正智能。</p>
+                <p class="footer-site">官方网站：<a href="https://lugui906.github.io/home" target="_blank">lugui906.github.io/home</a></p>
+                <div class="footer-social">
+                    <a href="https://lugui906.github.io/home" target="_blank" title="官方网站"><i class="fas fa-globe"></i></a>
+                    <a href="https://space.bilibili.com" target="_blank" title="哔哩哔哩 @陆龟软件"><i class="fab fa-bilibili"></i></a>
+                    <a href="https://www.zhihu.com" target="_blank" title="知乎 @陆龟软件"><i class="fab fa-zhihu"></i></a>
+                    <a href="https://www.xiaohongshu.com" target="_blank" title="小红书 @陆龟软件"><i class="fas fa-book-open"></i></a>
+                    <a href="https://channels.weixin.qq.com" target="_blank" title="微信视频号 @陆龟软件"><i class="fab fa-weixin"></i></a>
+                </div>
+                <p class="footer-accounts">微信视频号 · 小红书 · 知乎 · 哔哩哔哩：<strong>陆龟软件</strong></p>
             </div>
-            <div class="footer-col"><h4>快速链接</h4><ul><li><a href="#home">首页</a></li><li><a href="#features">AI 特性</a></li><li><a href="#advantage">核心优势</a></li><li><a href="#download">下载中心</a></li></ul></div>
-            <div class="footer-col"><h4>AI 生态</h4><ul><li><a href="#">智能体市场</a></li><li><a href="#">模型下载</a></li><li><a href="#">设备互联指南</a></li></ul></div>
-            <div class="footer-col"><h4>关于我们</h4><ul><li><a href="#">团队介绍</a></li><li><a href="#">加入我们</a></li><li><a href="#">联系我们</a></li><li><a href="#">隐私政策</a></li></ul></div>
+            <div class="footer-col">
+                <h4>快速链接</h4>
+                <ul>
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#features">AI 核心功能</a></li>
+                    <li><a href="#apps">应用生态</a></li>
+                    <li><a href="#download">下载中心</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="footer-copyright">© 2026 TurtleSoft NanJing 版权所有</div>
+        <div class="footer-copyright">
+            © 2026 TurtleSoft NanJing 版权所有
+        </div>
     </div>
 </footer>
 
 <div class="back-to-top"><i class="fas fa-arrow-up"></i></div>
 
 <script>
-    const canvas = document.getElementById('particles-canvas');
-    const ctx = canvas.getContext('2d');
-    let W, H;
-
-    function resize() {
-        W = canvas.width = window.innerWidth;
-        H = canvas.height = window.innerHeight;
-    }
-    resize();
-    window.addEventListener('resize', resize);
-
-    const particles = [];
-    const PARTICLE_COUNT = 80;
-    const MAX_DIST = 140;
-
-    class Particle {
-        constructor() {
-            this.reset();
-        }
-        reset() {
-            this.x = Math.random() * W;
-            this.y = Math.random() * H;
-            this.vx = (Math.random() - 0.5) * 0.6;
-            this.vy = (Math.random() - 0.5) * 0.6;
-            this.radius = Math.random() * 1.5 + 0.5;
-        }
-        update() {
-            this.x += this.vx;
-            this.y += this.vy;
-            if (this.x < 0 || this.x > W) this.vx *= -1;
-            if (this.y < 0 || this.y > H) this.vy *= -1;
-        }
-        draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(0,240,255,0.6)';
-            ctx.fill();
-        }
-    }
-
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
-        particles.push(new Particle());
-    }
-
-    function drawParticles() {
-        ctx.clearRect(0, 0, W, H);
-
-        for (let i = 0; i < particles.length; i++) {
-            particles[i].update();
-            particles[i].draw();
-
-            for (let j = i + 1; j < particles.length; j++) {
-                const dx = particles[i].x - particles[j].x;
-                const dy = particles[i].y - particles[j].y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < MAX_DIST) {
-                    const opacity = 1 - dist / MAX_DIST;
-                    ctx.beginPath();
-                    ctx.moveTo(particles[i].x, particles[i].y);
-                    ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.strokeStyle = `rgba(0,240,255,${opacity * 0.25})`;
-                    ctx.lineWidth = 0.6;
-                    ctx.stroke();
-                }
-            }
-        }
-        requestAnimationFrame(drawParticles);
-    }
-    drawParticles();
-
     const mobileMenu = document.querySelector('.mobile-menu');
-    const navMenu = document.querySelector('.nav-menu');
+    const navMenu = document.getElementById('navMenu');
     mobileMenu.addEventListener('click', () => {
         mobileMenu.classList.toggle('active');
         navMenu.classList.toggle('active');
     });
-    document.querySelectorAll('.nav-menu a').forEach(link => {
+    document.querySelectorAll('#navMenu a').forEach(link => {
         link.addEventListener('click', () => {
             mobileMenu.classList.remove('active');
             navMenu.classList.remove('active');
         });
     });
 
+    const navLinks = document.querySelectorAll('#navMenu a');
     window.addEventListener('scroll', () => {
-        document.querySelector('.nav').classList.toggle('scrolled', window.scrollY > 80);
-        document.querySelector('.back-to-top').classList.toggle('active', window.scrollY > 300);
+        const backTop = document.querySelector('.back-to-top');
+        backTop.classList.toggle('active', window.scrollY > 300);
+        const fromTop = window.scrollY + 120;
+        navLinks.forEach(link => {
+            const section = document.querySelector(link.getAttribute('href'));
+            if (section) {
+                link.classList.toggle('active', section.offsetTop <= fromTop && section.offsetTop + section.offsetHeight > fromTop);
+            }
+        });
     });
     document.querySelector('.back-to-top').addEventListener('click', () => {
         window.scrollTo({top: 0, behavior: 'smooth'});
@@ -955,24 +940,18 @@
     const observer = new IntersectionObserver(entries => {
         entries.forEach(e => {
             if (e.isIntersecting) {
-                e.target.style.opacity = 1;
-                e.target.style.transform = 'translateY(0)';
+                e.target.classList.add('in');
+                observer.unobserve(e.target);
             }
         });
-    }, {threshold: 0.1, rootMargin: '0px 0px -50px 0px'});
-    document.querySelectorAll('.feature-card, .advantage-item').forEach(c => {
-        c.style.opacity = 0;
-        c.style.transform = 'translateY(30px)';
-        c.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(c);
-    });
+    }, {threshold: 0.1, rootMargin: '0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal').forEach(c => observer.observe(c));
 
     function animateCounters() {
-        document.querySelectorAll('.banner-stat .num').forEach(el => {
+        document.querySelectorAll('.hero-stat .num').forEach(el => {
             const target = parseInt(el.dataset.target);
             const duration = 2000;
             const start = performance.now();
-
             function update(now) {
                 const elapsed = now - start;
                 const progress = Math.min(elapsed / duration, 1);
@@ -984,7 +963,7 @@
             requestAnimationFrame(update);
         });
     }
-
+    const heroStats = document.querySelector('.hero-stats');
     const bannerObserver = new IntersectionObserver(entries => {
         entries.forEach(e => {
             if (e.isIntersecting) {
@@ -992,9 +971,21 @@
                 bannerObserver.unobserve(e.target);
             }
         });
-    }, {threshold: 0.5});
-    const bannerStats = document.querySelector('.banner-stats');
-    if (bannerStats) bannerObserver.observe(bannerStats);
+    }, {threshold: 0.3});
+    if (heroStats) bannerObserver.observe(heroStats);
+
+    const ecoTabs = document.querySelectorAll('.eco-tab');
+    const ecoItems = document.querySelectorAll('.eco-item');
+    ecoTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            ecoTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            const group = tab.dataset.group;
+            ecoItems.forEach(item => {
+                item.style.display = (group === 'all' || item.dataset.group === group) ? 'flex' : 'none';
+            });
+        });
+    });
 
     document.getElementById('feedbackForm')?.addEventListener('submit', e => {
         e.preventDefault();
