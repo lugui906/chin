@@ -528,6 +528,58 @@
         .back-to-top.active {opacity: 1; visibility: visible;}
         .back-to-top:hover {transform: translateY(-4px); background: var(--primary-dark);}
 
+        /* ========== 开放框架 ========== */
+        .open-section {background: linear-gradient(135deg, #f2f6fd 0%, #eef8f9 100%);}
+        .open-card {
+            max-width: 860px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.8rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        .open-card .open-icon {
+            width: 64px; height: 64px;
+            margin: 0 auto 1.2rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--cyan));
+            display: flex; align-items: center; justify-content: center;
+            color: #fff; font-size: 1.6rem;
+            box-shadow: 0 8px 20px rgba(22,104,220,0.3);
+        }
+        .open-card h3 {font-size: 1.5rem; margin-bottom: 0.8rem;}
+        .open-card h3 span {color: var(--primary);}
+        .open-card .open-desc {color: var(--text-2); font-size: 1rem; line-height: 1.9; margin-bottom: 1.5rem;}
+        .open-demo {
+            background: var(--bg-gray);
+            border: 1px dashed #c9d4e3;
+            border-radius: 12px;
+            padding: 1.3rem 1.8rem;
+            text-align: left;
+            font-size: 0.95rem;
+            color: var(--text-2);
+            line-height: 1.9;
+            margin-bottom: 1.8rem;
+        }
+        .open-demo strong {color: var(--text);}
+        .open-demo .ask {color: var(--primary); font-weight: 600;}
+        .open-demo .ok {color: #16a34a; font-weight: 600;}
+        .open-badges {display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;}
+        .open-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 6px 16px;
+            border-radius: 20px;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 0.82rem;
+            font-weight: 600;
+            border: 1px solid rgba(22,104,220,0.15);
+        }
+        .open-badge.cyan {background: #e8f7f9; color: var(--cyan); border-color: rgba(0,179,199,0.15);}
+        .open-badge.green {background: #e8f7e8; color: #16a34a; border-color: rgba(22,163,74,0.15);}
+
         .reveal {opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease;}
         .reveal.in {opacity: 1; transform: translateY(0);}
 
@@ -592,6 +644,7 @@
         <ul class="nav-menu" id="navMenu">
             <li><a href="#home" class="active">首页</a></li>
             <li><a href="#features">AI 核心功能</a></li>
+            <li><a href="#open">开放框架</a></li>
             <li><a href="#apps">应用生态</a></li>
             <li><a href="#solutions">解决方案</a></li>
             <li><a href="#news">新闻动态</a></li>
@@ -674,6 +727,7 @@
             <div class="feature-card reveal"><i class="fas fa-closed-captioning"></i><h3>AI 实时字幕</h3><p>系统级实时语音字幕，Whisper 本地模型离线转写，看视频、开会不再靠听。</p></div>
             <div class="feature-card reveal"><i class="fas fa-comment-dots"></i><h3>本地 AI 助手</h3><p>内置 qwen3 本地模型，离线即可对话问答，隐私数据不出本机；另有 WebAI 网页版随时可用。</p></div>
             <div class="feature-card reveal"><i class="fas fa-cogs"></i><h3>AI 模型管理</h3><p>一键切换、安装 Ollama 模型，自定义 API Provider，本地/云端模型随需调配。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-plug"></i><h3>AIM 多提供方连接</h3><p>AIM 支持连接 openclaw、opencode 等 AI 提供方，一键接入第三方 Agent 能力，生态更开放。</p></div>
             <div class="feature-card reveal"><i class="fas fa-file-contract"></i><h3>AI 会议概括</h3><p>会议录音自动转文字并生成要点概括，长会一键出纪要，重点不遗漏。</p></div>
             <div class="feature-card reveal"><i class="fas fa-chart-line"></i><h3>Token 管理</h3><p>实时监控 token 用量与费用，AI 限额一目了然，支持多设备同步。</p></div>
             <div class="feature-card reveal"><i class="fas fa-sticky-note"></i><h3>AI 记事本</h3><p>AI 增强的文本编辑工具，随手记录，智能续写、整理、润色一步到位。</p></div>
@@ -682,11 +736,41 @@
             <div class="feature-card reveal"><i class="fas fa-scroll"></i><h3>AIS 解释器</h3><p>运行 AIS 自然语言脚本，一句句日常描述直接转成可执行脚本，编程零门槛。</p></div>
             <div class="feature-card reveal"><i class="fas fa-hand-paper"></i><h3>隔空手势</h3><p>手掌隔空控制电脑：上下滑动滚动页面、前推播放/暂停，纯本地离线推理，无接触操控更自由。</p></div>
             <div class="feature-card reveal"><i class="fas fa-bolt"></i><h3>AI 助手</h3><p>全局随时召唤的桌面 AI 助手，支持截图提问、快捷唤醒、上下文感知，一问即答。</p></div>
-            <div class="feature-card reveal"><i class="fas fa-folder-open"></i><h3>AI 文件对话</h3><p>在文件管理器中直接选中文件与 AI 对话，右键即可提问，文档理解无缝集成。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-folder-open"></i><h3>AI 文件对话</h3><p>在文件管理器中直接选中文件与 AI 对话，右键即可 AI 提问，文档理解无缝集成。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-palette"></i><h3>AI 色彩增强</h3><p>文件管理器中图片右键一键启用，AI 智能提升色彩饱和度与清晰度，老旧照片也能焕然一新。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-eraser"></i><h3>AI 消除</h3><p>文件管理器中图片右键一键启用，AI 智能去除水印、杂物与路人，一键修复，画面干净自然。</p></div>
             <div class="feature-card reveal"><i class="fas fa-network-wired"></i><h3>局域网 AI 共享</h3><p>局域网内共享 AI 服务，同一网络的设备都能调用；附带局域网文件、视频在线分享。</p></div>
-            <div class="feature-card reveal"><i class="fas fa-compass"></i><h3>BrowserOS 浏览器</h3><p>内置 BrowserOS 网页浏览，轻快流畅的桌面浏览器体验，日常上网更顺手。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-compass"></i><h3>BrowserOS 浏览器</h3><p>内置 BrowserOS 网页浏览，AI桌面浏览器，自动填表/整理信息等各类操作。</p></div>
             <div class="feature-card reveal"><i class="fas fa-toolbox"></i><h3>AI 电脑管家</h3><p>系统管理与优化一站式工具，进程、磁盘、网络状态一目了然，AI 命令一键执行，让系统保持清爽。</p></div>
             <div class="feature-card reveal"><i class="fas fa-file-word"></i><h3>Office AI 伴侣</h3><p>深度集成 LibreOffice 办公套件，AI 帮你改文档、写 PPT、做表格，排版润色自动完成，办公更省心。</p></div>
+            <div class="feature-card reveal"><i class="fas fa-toolbox"></i><h3>  AI内存排查</h3><p>在内存水位较高或者非正常上涨时，将会自动启动AI排查，避免像OOM一样误杀关键进程，使用更省心。</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 开放框架 ========== -->
+<section class="section open-section" id="open">
+    <div class="container">
+        <h2 class="section-title">开放框架 · <span>新功能由你探索</span></h2>
+        <div class="section-line"></div>
+        <p class="section-desc">TSAI-OS 12 采用开放的开源框架，AI 能力远超官方预设——系统里没有的功能，不代表不能实现</p>
+        <div class="open-card reveal">
+            <div class="open-icon"><i class="fas fa-rocket"></i></div>
+            <h3>框架是开放的，<span>你的想法就是新功能</span></h3>
+            <p class="open-desc">
+                我们始终保持框架开源开放，希望你可以自己去探索、去组合 AI 能力，发现并搭建属于你自己的新功能。
+                即使官方还没有某个功能，只要你觉得它可行，都可以直接告诉我们或自己动手——<strong>这完全可行，风险很低</strong>。
+            </p>
+            <div class="open-demo">
+                <strong>举个例子：</strong>官方目前没有“AI 简单修改视频”的现成功能，
+                但如果你说 <span class="ask">“帮我修改视频里的某个元素”</span>（比如去掉画面里的杂物、替换一段文字），
+                依托开放的框架与底层 AI 能力，<span class="ok">这完全可行，风险很低</span>，可以放心提出来探索。
+            </div>
+            <div class="open-badges">
+                <span class="open-badge"><i class="fas fa-code-branch"></i> 框架开源开放</span>
+                <span class="open-badge cyan"><i class="fas fa-lightbulb"></i> 功能自由探索</span>
+                <span class="open-badge green"><i class="fas fa-shield-alt"></i> 实现风险低</span>
+            </div>
         </div>
     </div>
 </section>
@@ -730,7 +814,7 @@
             <div class="eco-item" data-group="innov"><i class="fas fa-toolbox"></i><div><h4>AI 电脑管家</h4><p>系统管理一键优化</p></div></div>
             <div class="eco-item" data-group="innov"><i class="fas fa-mobile-alt"></i><div><h4>手机连接</h4><p>手机电脑轻松互通</p></div></div>
             <div class="eco-item" data-group="innov"><i class="fas fa-network-wired"></i><div><h4>局域网 AI 共享</h4><p>局域网 AI 与文件共享</p></div></div>
-            <div class="eco-item" data-group="innov"><i class="fas fa-compass"></i><div><h4>BrowserOS 浏览器</h4><p>轻快桌面浏览器</p></div></div>
+            <div class="eco-item" data-group="innov"><i class="fas fa-compass"></i><div><h4>BrowserOS 浏览器</h4><p>AI agent浏览器</p></div></div>
         </div>
     </div>
 </section>
@@ -774,7 +858,7 @@
         <p class="section-desc">了解 TSAI-OS 最新版本更新与功能动态</p>
         <div class="news-grid">
             <a href="#" class="news-item reveal">
-                <div class="news-date"><b>12</b><span>2026.08</span></div>
+                <div class="news-date"><b>14</b><span>2026.8</span></div>
                 <div><h3>TSAI-OS 12 正式发布，aim-ai 核心 2.0 全新升级</h3><p>35+ AI 功能全面赋能，打造智能原生桌面操作系统新体验</p></div>
             </a>
             <a href="#" class="news-item reveal">
@@ -800,7 +884,7 @@
         <div class="section-line"></div>
         <p class="section-desc">完善的下载渠道与服务体系，让安装、使用、反馈全程无忧</p>
         <div class="download-card" id="download">
-            <h3>获取 <span>TSAI-OS 12</span> 26.07 版本</h3>
+            <h3>获取 <span>TSAI-OS 12</span> 26.08 版本</h3>
             <p>aim-ai 核心 2.0 · 基于 Linux 的 AI 原生桌面操作系统</p>
             <div class="download-tip">
                 <strong>下载说明：</strong><br>
@@ -808,12 +892,12 @@
                 2. 选中全部 zip 文件一起解压<br>
                 3. 从压缩包中 <strong>复制 / 提取出 iso 镜像文件</strong> 即可用于安装<br><br>
                 <strong>云盘地址：</strong><br>
-                链接: <a href="https://yun.139.com/shareweb/#/w/i/2wFG9U0RzCbrl" target="_blank">https://yun.139.com/shareweb/#/w/i/2wFG9U0RzCbrl</a><br>
-                <strong>提取码：uxd4</strong><br><br>
+                链接: <a href="https://yun.139.com/shareweb/#/w/i/2wFGv9wgCNibj" target="_blank">https://yun.139.com/shareweb/#/w/i/2wFGv9wgCNibj</a><br>
+                <strong>提取码：hsil</strong><br><br>
                 复制内容打开 <strong>中国移动云盘手机 APP</strong>，操作更方便哦
             </div>
             <div class="download-btns">
-                <a href="https://yun.139.com/shareweb/#/w/i/2wFG9U0RzCbrl" target="_blank" class="btn btn-primary btn-lg">
+                <a href="https://yun.139.com/shareweb/#/w/i/2wFGv9wgCNibj" target="_blank" class="btn btn-primary btn-lg">
                     <i class="fas fa-cloud-download-alt"></i> 打开云盘下载
                 </a>
                 <a href="https://lugui906.github.io/help" target="_blank" class="btn btn-outline btn-lg">查看使用帮助</a>
@@ -894,6 +978,7 @@
                 <ul>
                     <li><a href="#home">首页</a></li>
                     <li><a href="#features">AI 核心功能</a></li>
+                    <li><a href="#open">开放框架</a></li>
                     <li><a href="#apps">应用生态</a></li>
                     <li><a href="#download">下载中心</a></li>
                 </ul>
